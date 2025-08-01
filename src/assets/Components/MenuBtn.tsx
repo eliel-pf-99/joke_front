@@ -4,8 +4,9 @@ import { useContext, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { AlertContext, StatusContext } from "../context/status";
+import { denounceJoke } from "../API/API";
 
-export default function MenuBtn(){
+export default function MenuBtn({jokeId}: {jokeId?: number}){
     const [toogle, setToogle] = useState(false)
     const [status, setStatus] = useContext(StatusContext)
     const [, setAlert] = useContext(AlertContext)
@@ -50,8 +51,8 @@ export default function MenuBtn(){
         setStatus(status === 'create' ? 'joker' : 'create')
     }
 
-    function denounceJoke(){
-        //TODO
+    function action(){
+        denounceJoke(jokeId)
         setAlert('denounce')
     }
     
@@ -69,7 +70,7 @@ export default function MenuBtn(){
                 <><FontAwesomeIcon icon={faHouse} size="1x" />
                 Home</>}
             </button>
-            <button onClick={denounceJoke} id="btn_denounce" className="flex gap-5 items-center text-xl bg-red-700 p-4 rounded-full cursor-pointer">
+            <button onClick={action} id="btn_denounce" className="flex gap-5 items-center text-xl bg-red-700 p-4 rounded-full cursor-pointer">
                 <FontAwesomeIcon icon={faTriangleExclamation} size="1x"/>
                 Denunciar Piada
             </button>

@@ -2,9 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation, faFaceLaughSquint, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { StatusContext, AlertContext } from "../context/status";
+import { denounceJoke } from "../API/API";
 
 
-export default function MenuBtnMobile(){
+export default function MenuBtnMobile({jokeId}: {jokeId?: number}){
     const [status, setStatus] = useContext(StatusContext)
     const [, setAlert] = useContext(AlertContext)
 
@@ -12,8 +13,8 @@ export default function MenuBtnMobile(){
         setStatus(status === 'create' ? 'joker' : 'create')
     }
 
-     function denounceJoke(){
-        //TODO
+     function action(){
+        denounceJoke(jokeId)
         setAlert('denounce')
     }
 
@@ -25,7 +26,7 @@ export default function MenuBtnMobile(){
                                 <><FontAwesomeIcon icon={faHouse} size="1x" />
                                 Home</>}
             </button>
-            <button onClick={denounceJoke} id="btn_denounce_mobile" className="flex gap-5 text-center items-center text-xl bg-red-700 p-4 rounded-full cursor-pointer">
+            <button onClick={action} id="btn_denounce_mobile" className="flex gap-5 text-center items-center text-xl bg-red-700 p-4 rounded-full cursor-pointer">
                 <FontAwesomeIcon icon={faTriangleExclamation} size="1x"/>
                 Denunciar Piada
             </button>

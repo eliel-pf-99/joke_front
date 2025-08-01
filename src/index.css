@@ -4,7 +4,7 @@
 
 
 @utility main{
-  @apply bg-[#431f87] h-dvh text-white
+  @apply bg-[#431f87] text-white
 }
 
 @theme {

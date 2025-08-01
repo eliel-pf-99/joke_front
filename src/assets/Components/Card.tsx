@@ -10,7 +10,7 @@ function Card({question, answer, loading}: {question: string, answer: string, lo
     useGSAP(() => {
         const question = new SplitText('#question_id', {type: 'chars, words'})
         const answer = new SplitText('#answer_id', {type: 'chars'})
-
+        
         gsap.from(question.chars, {
             opacity: 0,
             duration: 0.05,
@@ -34,8 +34,8 @@ function Card({question, answer, loading}: {question: string, answer: string, lo
             yoyo: true
         });
         
-    }, [question, answer, loading])
-
+    }, [question])
+    console.log('card', loading)
     useGSAP(() => {
         if(status === 'create') {
             gsap.to("#card", {
