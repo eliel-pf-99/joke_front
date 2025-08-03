@@ -35,7 +35,6 @@ function Card({question, answer, loading}: {question: string, answer: string, lo
         });
         
     }, [question])
-    console.log('card', loading)
     useGSAP(() => {
         if(status === 'create') {
             gsap.to("#card", {

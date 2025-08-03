@@ -14,7 +14,7 @@ function App() {
   const [status] = useContext(StatusContext)
   const [, setAlert] = useContext(AlertContext)
 
-  const [currentJoke, setCurrentJoke] = useState<Joke>({question: "", answer:""})
+  const [currentJoke, setCurrentJoke] = useState<Joke>({question: "Carregando", answer:"Piadas..."})
   const [createJoke, setCreateJoke] = useState<Joke>({question: "", answer:""})
   const [loading, setLoading] = useState(false)
 
